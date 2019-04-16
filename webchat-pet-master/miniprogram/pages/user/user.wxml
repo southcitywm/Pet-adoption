@@ -1,0 +1,44 @@
+<view class="container">
+    <view class="userinfo">
+        <block wx:if="{{!hasUserInfo && canIUse}}">
+            <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+        
+        </block>
+        <block wx:else>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+      <van-rate value="{{ value }}" icon="like" void-icon="like-o" color="#f13c3c" bind:change="onChange" />
+</view>
+  <van-cell-group>
+  <van-cell
+    title="我的爱心值"
+    value="79"
+  />
+  <van-cell
+  title="我的发布"
+  value=""
+  is-link
+  url="../index"
+/>
+  </van-cell-group>
+  <van-cell-group>
+  <van-cell
+  title="我的信息"
+  value=""
+  is-link
+  url="../index"
+/>
+</van-cell-group>
+  <van-cell-group>
+  <van-cell
+  title="评测信息"
+  value=""
+  is-link
+  url="../index"
+/>
+</van-cell-group>
+
+
+

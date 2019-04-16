@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<van-card wx:for="{{pet_list}}" num="1" desc="{{item.desc}}" title="{{item.title}}" thumb="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553513020747&di=86c72eeeaaea9b66e40f0f6dc117790f&imgtype=0&src=http%3A%2F%2Fimg3.redocn.com%2F20121011%2FRedocn_2012093013543823.jpg">
+  <view slot="footer">
+    <van-row gutter="20">
+      <van-col span="19">
+        <van-button plain type="primary" size="small">查看详情</van-button>
+      </van-col>
+      <van-button plain type="danger" size="small">收养</van-button>
+    </van-row>
+  </view>
+</van-card>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-area": "/../../dist/area/index",
+    "van-field": "/../../dist/field/index",
+    "wux-cell-group": "../../dist2/cell-group/index",
+    "wux-cell": "../../dist2/cell/index",
+    "wux-input": "../../dist2/input/index"
+  }
+}

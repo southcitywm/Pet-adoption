@@ -1,0 +1,38 @@
+<view class="mbTxing">
+  <text>【注】违法广告信息将会被管理员永久禁言</text>
+  <text>【意】违法广告信息将会被管理员永久禁言</text>
+  <text>【啦】违法广告信息将会被管理员永久禁言</text>
+</view>
+<!-- 获取发布位置 -->
+<view class='getGps'>
+  <label class='title'>我的地址</label>
+  <image src="../../image/map.png" class="mapIco" mode="widthFix"></image>
+  <view class='info' bindtap="handleAddressClick">{{address}}</view>
+</view>
+
+<view class="group wechat">
+  <view class="left">微信</view>
+  <input class="right" placeholder="请输入微信号" data-type="wechat" bindinput='msgInput'/>
+</view>
+
+<view class="group qq">
+  <view class="left">QQ</view>
+  <input class="right" placeholder="请输入QQ号" data-type="qq" bindinput='msgInput'/>
+</view>
+
+<view class="group title">
+  <view class="left">标题</view>
+  <input class="right" placeholder="请输入标题" data-type="title" bindinput='msgInput'/>
+</view>
+
+<view class="group desc">
+  <view class="left">宠物情况介绍</view>
+  <input class="right" placeholder="请输入介绍内容" data-type="desc" bindinput='msgInput'/>
+</view>
+
+
+
+
+<view class="mbBtn">
+  <button class="vBtn_ok" bindtap='submitMsg' formType="submit">提交信息</button>
+</view>
