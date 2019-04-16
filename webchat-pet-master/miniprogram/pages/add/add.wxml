@@ -7,7 +7,7 @@
 <view class='getGps'>
   <label class='title'>我的地址</label>
   <image src="../../image/map.png" class="mapIco" mode="widthFix"></image>
-  <view class='info' bindtap="handleAddressClick">{{address}}</view>
+  <input class='info' bindtap="handleAddressClick" placeholder='点击选择，要勾选哎！' value="{{address}}"/>
 </view>
 
 <view class="group title">
@@ -21,7 +21,7 @@
 
 <view class="group qq">
   <view class="left">电话号码</view>
-  <input class="right" placeholder="请输入电话号码" data-type="qq" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入电话号码" data-type="phone" bindinput='msgInput'/>
 </view>
 
 <view class="group varieties">
@@ -46,10 +46,41 @@
 
 <!-- 照片上传-->
   <view class="left">点击上传宠物图片</view>
-  <view bindtap="checkimg" class='checkimg'>
+  
+
+  <view class="page__bd">
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title">图片上传</view>
+                            <view class="weui-uploader__info">{{files.length}}张</view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>
+                                
+                               
+
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+  <!-- <view bindtap="checkimg" class='checkimg'>
     <image wx:for="{{imglist}}" class="uploadPics" mode="aspectFill" src="{{item}}" wx:key=""></image>
     <image src="../../image/upic.png" class="uploadPic" mode="widthFix"></image>
-    </view>
+    </view> -->
 
 <view class="mbBtn">
   <button class="vBtn_ok" bindtap='submitMsg' formType="submit">提交信息</button>

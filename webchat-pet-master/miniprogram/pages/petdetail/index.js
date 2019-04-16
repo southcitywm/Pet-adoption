@@ -1,9 +1,11 @@
 //index.js
 const db = wx.cloud.database()
+//获取应用实例
+const app = getApp()
 
 Page({
   data: {
-    pet_list: []
+    data: []
   },
   /*
   },
@@ -13,83 +15,74 @@ Page({
    */
   onLoad: function (options) {
     let self = this
-    self.getPetList()
+    let id = options.id
+
+    db.collection('petList').doc(id).get().then(res => {
+      // res.data 包含该记录的数据
+      console.log(res.data)
+      self.setData({
+        data: res.data,
+      })
+    })
   },
 
-  getPetList() {
+  // 预览图片
+  previewImage: function (e) {
     let self = this
-    db.collection('petList').get().then(res => {
-      // res.data 是一个包含集合中有权限访问的所有记录的数据，不超过 20 条
-      console.log(res.data, res.data.length)
-      if (res.data.length > 0) {
-        self.setData({
-          pet_list: res.data
-        })
-      } else {
-        wx.showToast({
-          title: '没有数据',
-          icon: 'none',
-          duration: 2000
-        })
-      }
+    console.log(self.data)
+    wx.previewImage({
+      current: e.currentTarget.id, // 当前显示图片的http链接
+      urls: self.data.data.files // 需要预览的图片http链接列表
     })
   },
 
-  // 进入宠物详情页
-  petDetail(e) {
-    let id = e.target.dataset.id
-    wx.navigateTo({
-      url: '/pages/petdetail/index?id=' + id,
-    })
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let self = this
-    self.getPetList()
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })

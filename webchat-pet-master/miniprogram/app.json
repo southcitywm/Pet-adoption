@@ -1,8 +1,11 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/petdetail/index",
     "pages/add/add",
     "pages/user/user"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

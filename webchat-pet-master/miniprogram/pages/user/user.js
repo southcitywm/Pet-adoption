@@ -49,7 +49,7 @@ Page({
       getUserInfo(e) {
         if (e.detail.userInfo) {
           app.globalData.userInfo = e.detail.userInfo
-
+          console.log(e.detail.userInfo)
           this.setData({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
@@ -80,5 +80,12 @@ Page({
         })
         app.globalData.nickName = user.nickName
         app.globalData.id = result._id
+        wx.setStorage({
+          key: 'openid',
+          data: result._id,
+          success: function(res) {},
+          fail: function(res) {},
+          complete: function(res) {},
+        })
       }
       })

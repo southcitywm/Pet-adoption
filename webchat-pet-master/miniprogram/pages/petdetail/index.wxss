@@ -1,0 +1,5 @@
+.cover-btn {
+  width: 80%;
+  border-radius: 40rpx;
+  background-color: #ff4444 !important;
+}
