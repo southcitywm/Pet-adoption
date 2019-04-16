@@ -3,12 +3,15 @@ const publishCollection = db.collection('publish')
 var wxMarkerData = [];  
 Page({
   data: {
-    address: "点击选择，要勾选哎！",
+    address: " 点击选择，要勾选哎！",
     success: false,
     wechat: '',
     qq: '',
     title: '',
     desc: '',
+    varieties:'',
+    sex:'',
+    age:'',
   },
    handleAddressClick() {
     wx.chooseLocation({
@@ -56,9 +59,24 @@ Page({
           title: data
         })
         break;
+      case 'varieties':
+        self.setData({
+          varieties: data
+        })
+        break;
       case 'desc':
         self.setData({
           desc: data
+        })
+        break;
+      case 'sex':
+        self.setData({
+          sex: data
+        })
+        break;
+      case 'age':
+        self.setData({
+          age: data
         })
         break;
     }
@@ -67,7 +85,7 @@ Page({
   // 提交信息
   submitMsg() {
     let self = this.data
-    if (!self.address || !self.wechat || !self.qq || !self.title || !self.desc) {
+    if (!self.address || !self.wechat || !self.qq || !self.title || !self.desc || !self.varieties || !self.sex || !self.age) {
       wx.showToast({
         title: '请填写完整',
         icon: 'none',
@@ -79,6 +97,9 @@ Page({
     console.log(this.data.qq)
     console.log(this.data.title)
     console.log(this.data.desc)
+    console.log(this.data.varieties)
+    console.log(this.data.age)
+    console.log(this.data.sex)
 
     // db.collection('petList').where({
     //   title: self.title,
@@ -95,7 +116,10 @@ Page({
         wechat: self.wechat,
         qq: self.qq,
         title: self.title,
-        desc: self.desc
+        desc: self.desc,
+        varieties:self.varieties,
+        sex:self.sex,
+        age:self.age,
       },
       success: (res) => {
         console.log(res)

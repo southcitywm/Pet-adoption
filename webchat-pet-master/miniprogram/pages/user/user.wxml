@@ -25,7 +25,7 @@
   </van-cell-group>
   <van-cell-group>
   <van-cell
-  title="我的信息"
+  title="我的收养"
   value=""
   is-link
   url="../index"
@@ -39,6 +39,13 @@
   url="../index"
 />
 </van-cell-group>
-
+  <van-cell-group>
+  <van-cell
+  title="意见反馈"
+  value=""
+  is-link
+  url="../index"
+/>
+</van-cell-group>
 
 

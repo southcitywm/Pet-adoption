@@ -72,7 +72,7 @@ image.mapIco{
   margin-right: 15rpx
 }
 
-/* 表白对象 */
+
 .duixiang{
   width: 90%; background: #fff;
   border-bottom: 2rpx #ECECEC solid;

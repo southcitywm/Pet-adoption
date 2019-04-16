@@ -10,28 +10,46 @@
   <view class='info' bindtap="handleAddressClick">{{address}}</view>
 </view>
 
+<view class="group title">
+  <view class="left">标题</view>
+  <input class="right" placeholder="请输入标题" data-type="title" bindinput='msgInput'/>
+</view>
 <view class="group wechat">
   <view class="left">微信</view>
   <input class="right" placeholder="请输入微信号" data-type="wechat" bindinput='msgInput'/>
 </view>
 
 <view class="group qq">
-  <view class="left">QQ</view>
-  <input class="right" placeholder="请输入QQ号" data-type="qq" bindinput='msgInput'/>
+  <view class="left">电话号码</view>
+  <input class="right" placeholder="请输入电话号码" data-type="qq" bindinput='msgInput'/>
 </view>
 
-<view class="group title">
-  <view class="left">标题</view>
-  <input class="right" placeholder="请输入标题" data-type="title" bindinput='msgInput'/>
+<view class="group varieties">
+  <view class="left">宠物品种</view>
+  <input class="right" placeholder="请输入宠物品种" data-type="varieties" bindinput='msgInput'/>
+</view>
+
+<view class="group sex">
+  <view class="left">宠物性别</view>
+  <input class="right" placeholder="请输入宠物性别: 公/母" data-type="sex" bindinput='msgInput'/>
+</view>
+
+<view class="group age">
+  <view class="left">宠物年龄</view>
+  <input class="right" placeholder="请输入宠物年龄" data-type="age" bindinput='msgInput'/>
 </view>
 
 <view class="group desc">
-  <view class="left">宠物情况介绍</view>
+  <view class="left">宠物其他情况介绍</view>
   <input class="right" placeholder="请输入介绍内容" data-type="desc" bindinput='msgInput'/>
 </view>
 
-
-
+<!-- 照片上传-->
+  <view class="left">点击上传宠物图片</view>
+  <view bindtap="checkimg" class='checkimg'>
+    <image wx:for="{{imglist}}" class="uploadPics" mode="aspectFill" src="{{item}}" wx:key=""></image>
+    <image src="../../image/upic.png" class="uploadPic" mode="widthFix"></image>
+    </view>
 
 <view class="mbBtn">
   <button class="vBtn_ok" bindtap='submitMsg' formType="submit">提交信息</button>

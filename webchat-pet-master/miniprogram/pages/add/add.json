@@ -4,6 +4,7 @@
     "van-field": "/../../dist/field/index",
     "wux-cell-group": "../../dist2/cell-group/index",
     "wux-cell": "../../dist2/cell/index",
-    "wux-input": "../../dist2/input/index"
+    "wux-input": "../../dist2/input/index",
+    "wux-select": "../../dist2/select/index"
   }
 }
