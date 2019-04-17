@@ -20,7 +20,7 @@
   title="我的发布"
   value=""
   is-link
-  url="../index"
+  url="../add/add"
 />
   </van-cell-group>
   <van-cell-group>
@@ -36,7 +36,7 @@
   title="评测信息"
   value=""
   is-link
-  url="../index"
+   url="../index"
 />
 </van-cell-group>
   <van-cell-group>
@@ -44,8 +44,10 @@
   title="意见反馈"
   value=""
   is-link
-  url="../index"
+  url="../feedback/feedback"
 />
-</van-cell-group>
+ </van-cell-group>
+
+
 
 

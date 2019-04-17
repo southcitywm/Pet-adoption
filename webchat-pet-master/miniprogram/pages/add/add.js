@@ -6,13 +6,13 @@ Page({
     address: "",
     success: false,
     wechat: '',
-    qq: '',
     title: '',
     desc: '',
     varieties:'',
     sex:'',
     age:'',
     phone: '',
+    num:'',
     files: [],
   },
    handleAddressClick() {
@@ -51,11 +51,6 @@ Page({
           wechat: data
         })
         break;
-      case 'qq':
-        self.setData({
-          qq: data
-        })
-        break;
       case 'title':
         self.setData({
           title: data
@@ -84,6 +79,11 @@ Page({
       case 'phone':
         self.setData({
           phone: data
+        })
+        break;
+      case 'num':
+        self.setData({
+          num: data
         })
         break;
     }
@@ -144,7 +144,7 @@ Page({
   // 提交信息
   submitMsg() {
     let self = this.data
-    if (!self.address || !self.wechat || !self.title || !self.desc || !self.varieties || !self.sex || !self.age) {
+    if (!self.address || !self.wechat || !self.title || !self.desc || !self.varieties || !self.sex || !self.age | !self.phone) {
       wx.showToast({
         title: '请填写完整',
         icon: 'none',
@@ -165,14 +165,14 @@ Page({
 
     console.log(this.data.address)
     console.log(this.data.wechat)
-    console.log(this.data.qq)
+    console.log(this.data.phone)
     console.log(this.data.title)
     console.log(this.data.desc)
     console.log(this.data.varieties)
     console.log(this.data.age)
     console.log(this.data.sex)
     console.log(this.data.files)
-
+    console.log(this.data.num)
 
     db.collection('petList').add({
       data: {
@@ -184,6 +184,7 @@ Page({
         varieties:self.varieties,
         sex:self.sex,
         age:self.age,
+        num:self.num,
         files: self.files,
       },
       success: (res) => {

@@ -1,8 +1,8 @@
 {
   "usingComponents": {
     "van-rate": "/../../dist/rate/index",
-      "van-cell": "/../../dist/cell/index",
-      "van-cell-group": "/../../dist/cell-group/index"
+    "van-cell": "/../../dist/cell/index",
+    "van-cell-group": "/../../dist/cell-group/index"
        
   },
   "navigationBarTitleText": "个人信息"

@@ -19,7 +19,7 @@
   <input class="right" placeholder="请输入微信号" data-type="wechat" bindinput='msgInput'/>
 </view>
 
-<view class="group qq">
+<view class="group phone">
   <view class="left">电话号码</view>
   <input class="right" placeholder="请输入电话号码" data-type="phone" bindinput='msgInput'/>
 </view>
@@ -39,22 +39,23 @@
   <input class="right" placeholder="请输入宠物年龄" data-type="age" bindinput='msgInput'/>
 </view>
 
+<view class="group num">
+  <view class="left">宠物数量</view>
+  <input class="right" placeholder="请输入宠物数量" data-type="num" bindinput='msgInput'/>
+</view>
+
 <view class="group desc">
   <view class="left">宠物其他情况介绍</view>
   <input class="right" placeholder="请输入介绍内容" data-type="desc" bindinput='msgInput'/>
 </view>
-
 <!-- 照片上传-->
-  <view class="left">点击上传宠物图片</view>
-  
-
   <view class="page__bd">
         <view class="weui-cells">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
                     <view class="weui-uploader">
                         <view class="weui-uploader__hd">
-                            <view class="weui-uploader__title">图片上传</view>
+                            <view class="weui-uploader__title">宠物图片上传</view>
                             <view class="weui-uploader__info">{{files.length}}张</view>
                         </view>
                         <view class="weui-uploader__bd">
@@ -77,10 +78,7 @@
             </view>
         </view>
     </view>
-  <!-- <view bindtap="checkimg" class='checkimg'>
-    <image wx:for="{{imglist}}" class="uploadPics" mode="aspectFill" src="{{item}}" wx:key=""></image>
-    <image src="../../image/upic.png" class="uploadPic" mode="widthFix"></image>
-    </view> -->
+
 
 <view class="mbBtn">
   <button class="vBtn_ok" bindtap='submitMsg' formType="submit">提交信息</button>

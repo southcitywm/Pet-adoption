@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/petdetail/index",
     "pages/add/add",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/feedback/feedback"
     
   ],
   "window": {
