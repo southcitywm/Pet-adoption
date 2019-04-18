@@ -5,7 +5,9 @@ const app = getApp()
 
 Page({
   data: {
-    data: []
+    data: [],
+    // 收养页面doc_id
+    doc_id: ''
   },
   
 
@@ -15,6 +17,10 @@ Page({
   onLoad: function (options) {
     let self = this
     let id = options.id
+
+    self.setData({
+      doc_id: id,
+    })
 
     db.collection('petList').doc(id).get().then(res => {
       // res.data 包含该记录的数据
@@ -32,6 +38,46 @@ Page({
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: self.data.data.files // 需要预览的图片http链接列表
+    })
+  },
+
+  // 点击收养
+  adoption() {
+    let self = this
+    let openid = wx.getStorageSync('openid')
+
+    // 获取到adoption_list
+    db.collection('user').where({
+      _openid: openid
+    }).get().then(res => {
+      let adoption_list = res.data[0].adoption_list
+      // 用户doc_id
+      let id = res.data[0]._id
+      let arr = []
+      if (adoption_list.indexOf(self.data.doc_id) >= 0) {
+        wx.showToast({
+          title: '已发送收养请求',
+          icon: 'none',
+          duration: 1500
+        })
+        console.log('已经存在,不需在收养')
+        return
+      }
+      db.collection('user').doc(id).update({
+        data: {
+          adoption_list: adoption_list.concat(self.data.doc_id)
+        }
+      }).then((res) => {
+        console.log('添加成功')
+      })
+
+    })
+    
+
+    wx.showToast({
+      title: '已发送收养请求',
+      icon: 'none',
+      duration: 1500
     })
   },
 

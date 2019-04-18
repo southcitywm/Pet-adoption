@@ -2,6 +2,8 @@
 const regeneratorRuntime = require('../common/regenerator-runtime.js')
 //获取应用实例
 const app = getApp()
+const db = wx.cloud.database({})
+let openid = ''
 
 Page({
       data: {
@@ -17,7 +19,7 @@ Page({
             hasUserInfo: true
           })
 
-          this.addUser(app.globalData.userInfo)
+          // this.addUser(app.globalData.userInfo)
         } else if (this.data.canIUse) {
           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
           // 所以此处加入 callback 以防止这种情况
@@ -27,7 +29,7 @@ Page({
               hasUserInfo: true
             })
 
-            this.addUser(res.userInfo)
+            // this.addUser(res.userInfo)
           }
         } else {
           // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -40,13 +42,14 @@ Page({
                 hasUserInfo: true
               })
 
-              this.addUser(app.globalData.userInfo)
+              // this.addUser(app.globalData.userInfo)
             }
           })
         }
       },
 
-      getUserInfo(e) {
+      // 获取用户信息
+      async getUserInfo(e) {
         if (e.detail.userInfo) {
           app.globalData.userInfo = e.detail.userInfo
           console.log(e.detail.userInfo)
@@ -55,9 +58,39 @@ Page({
             hasUserInfo: true
           })
 
-          this.addUser(app.globalData.userInfo)
+          wx.cloud.callFunction({
+            name: 'login',
+          }).then(async (res) => {
+            console.log(res)
+            // 获取openid
+            openid = res.result.openid
 
-          // wx.switchTab({ url: '/pages/index/index' })
+            let result = await db.collection('user').where({
+              _openid: openid
+            }).get()
+
+            // 设置openid
+            wx.setStorage({
+              key: 'openid',
+              data: openid,
+            })
+
+            console.log('result:', result)
+
+            
+
+            // 判断user表里面是否有openid
+            if (result.data.length == 0) {
+              this.addUser(e.detail.userInfo)
+            } else {
+              // 设置usermsg
+              wx.setStorage({
+                key: 'usermsg',
+                data: result.data[0].usermsg,
+              })
+            }
+          })
+          return
         }
       },
 
@@ -68,24 +101,20 @@ Page({
         }
 
         // 在此插入储存用户代码
-        // 获取数据库实例
-        const db = wx.cloud.database({})
+
+        console.log(user)
 
         // 插入用户信息
         let result = await db.collection('user').add({
           data: {
-            nickName: user.nickName,
-            albums: []
+            ...user,
+            // 用户信息
+            usermsg: 0,
+            adoption_list: []
           }
         })
         app.globalData.nickName = user.nickName
         app.globalData.id = result._id
-        wx.setStorage({
-          key: 'openid',
-          data: result._id,
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {},
-        })
+        
       }
       })

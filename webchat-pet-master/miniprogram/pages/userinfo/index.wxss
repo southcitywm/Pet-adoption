@@ -1,0 +1,18 @@
+.group {
+  display: flex;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  padding: 8rpx 30rpx;
+  font-size: 30rpx;
+}
+
+.group .right {
+  margin-left: 50rpx;
+  align-self: center;
+}
+
+
+.cover-btn {
+  width: 80%;
+  border-radius: 40rpx;
+}

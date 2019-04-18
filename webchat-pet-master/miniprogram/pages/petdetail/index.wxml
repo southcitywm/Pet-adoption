@@ -1,26 +1,29 @@
 <view class="page__bd">
+       
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title">宠物图片</view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{data.files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>
+                                
+                               
 
-    <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <view class="weui-uploader">
-          <view class="weui-uploader__hd">
-            <view class="weui-uploader__title">宠物图片</view>
-          </view>
-          <view class="weui-uploader__bd">
-            <view class="weui-uploader__files" id="uploaderFiles">
-              <block wx:for="{{data.files}}" wx:key="*this">
-                <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
-                  <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                            </view>
+                            
+                        </view>
+                    </view>
                 </view>
-              </block>
             </view>
-          </view>
         </view>
-      </view>
-    </view>
-  </view>
-
-
+  
 <view class="weui-cells weui-cells_after-title">
   <view class="weui-cell">
     <view class="weui-cell__bd">标题</view>
@@ -36,12 +39,6 @@
     <view class="weui-cell__bd">微信</view>
     <view class="weui-cell__ft">{{data.wechat}}</view>
   </view>
-
-  <!-- <view class="weui-cell">
-    <view class="weui-cell__bd">qq</view>
-    <view class="weui-cell__ft">{{data.qq}}</view>
-  </view> -->
-
   <view class="weui-cell">
     <view class="weui-cell__bd">电话号码</view>
     <view class="weui-cell__ft">{{data.phone}}</view>
@@ -69,4 +66,4 @@
 
 </view>
 
-<button class="weui-btn cover-btn" type="primary">领取</button>
+<button class="weui-btn cover-btn" bindtap='adoption' type="primary">收养</button>

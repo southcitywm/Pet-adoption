@@ -12,31 +12,31 @@
 
 <view class="group title">
   <view class="left">标题</view>
-  <input class="right" placeholder="请输入标题" data-type="title" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入标题" data-type="title" bindinput='msgInput' value="{{title}}"/>
 </view>
 <view class="group wechat">
   <view class="left">微信</view>
-  <input class="right" placeholder="请输入微信号" data-type="wechat" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入微信号" data-type="wechat" bindinput='msgInput' value="{{wechat}}"/>
 </view>
 
 <view class="group phone">
   <view class="left">电话号码</view>
-  <input class="right" placeholder="请输入电话号码" data-type="phone" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入电话号码" data-type="phone" bindinput='msgInput' value="{{phone}}"/>
 </view>
 
 <view class="group varieties">
   <view class="left">宠物品种</view>
-  <input class="right" placeholder="请输入宠物品种" data-type="varieties" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入宠物品种" data-type="varieties" bindinput='msgInput' value="{{varieties}}"/>
 </view>
 
 <view class="group sex">
   <view class="left">宠物性别</view>
-  <input class="right" placeholder="请输入宠物性别: 公/母" data-type="sex" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入宠物性别: 公/母" data-type="sex" bindinput='msgInput' value="{{sex}}"/>
 </view>
 
 <view class="group age">
   <view class="left">宠物年龄</view>
-  <input class="right" placeholder="请输入宠物年龄" data-type="age" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入宠物年龄" data-type="age" bindinput='msgInput' value="{{age}}"/>
 </view>
 
 <view class="group num">
@@ -46,7 +46,7 @@
 
 <view class="group desc">
   <view class="left">宠物其他情况介绍</view>
-  <input class="right" placeholder="请输入介绍内容" data-type="desc" bindinput='msgInput'/>
+  <input class="right" placeholder="请输入介绍内容" data-type="desc" bindinput='msgInput' value="{{desc}}"/>
 </view>
 <!-- 照片上传-->
   <view class="page__bd">
@@ -61,7 +61,7 @@
                         <view class="weui-uploader__bd">
                             <view class="weui-uploader__files" id="uploaderFiles">
                                 <block wx:for="{{files}}" wx:key="*this">
-                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}" data-index="{{index}}" bindlongpress="deleteImage">
                                         <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
                                     </view>
                                 </block>

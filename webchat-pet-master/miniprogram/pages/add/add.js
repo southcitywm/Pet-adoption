@@ -6,13 +6,14 @@ Page({
     address: "",
     success: false,
     wechat: '',
+    qq: '',
     title: '',
     desc: '',
     varieties:'',
+    num:'',
     sex:'',
     age:'',
     phone: '',
-    num:'',
     files: [],
   },
    handleAddressClick() {
@@ -51,6 +52,11 @@ Page({
           wechat: data
         })
         break;
+      case 'num':
+        self.setData({
+          num: data
+        })
+        break;
       case 'title':
         self.setData({
           title: data
@@ -81,11 +87,6 @@ Page({
           phone: data
         })
         break;
-      case 'num':
-        self.setData({
-          num: data
-        })
-        break;
     }
   },
 
@@ -106,7 +107,7 @@ Page({
   uploadImg(filePath) {
     const self = this
     const cloudPath = 'perlist/' + new Date().getTime() + filePath.match(/\.[^.]+?$/)[0]
-    console.log('cloudPath:', cloudPath)
+    // console.log('cloudPath:', cloudPath)
     wx.showLoading({
       title: '上传图片中',
     })
@@ -122,7 +123,7 @@ Page({
       },
       fail: err => {
         // handle error
-        console.log(err)
+        // console.log(err)
         wx.showToast({
           title: '上传失败',
           icon: 'none',
@@ -140,11 +141,36 @@ Page({
       urls: this.data.files // 需要预览的图片http链接列表
     })
   },
+
+  // 删除图片
+  deleteImage(e) {
+    var self = this;
+    var files = self.data.files;
+    var index = e.currentTarget.dataset.index;//获取当前长按图片下标
+    console.log(index)
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除此图片吗？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('点击确定了');
+          files.splice(index, 1);
+        } else if (res.cancel) {
+          console.log('点击取消了');
+          return false;
+        }
+        self.setData({
+          files
+        });
+      }
+    })
+  },
   
   // 提交信息
   submitMsg() {
     let self = this.data
-    if (!self.address || !self.wechat || !self.title || !self.desc || !self.varieties || !self.sex || !self.age | !self.phone) {
+    let that = this
+    if (!self.address || !self.wechat || !self.title || !self.desc || !self.varieties || !self.sex || !self.age || !self.num) {
       wx.showToast({
         title: '请填写完整',
         icon: 'none',
@@ -163,17 +189,6 @@ Page({
     //   return 
     // }
 
-    console.log(this.data.address)
-    console.log(this.data.wechat)
-    console.log(this.data.phone)
-    console.log(this.data.title)
-    console.log(this.data.desc)
-    console.log(this.data.varieties)
-    console.log(this.data.age)
-    console.log(this.data.sex)
-    console.log(this.data.files)
-    console.log(this.data.num)
-
     db.collection('petList').add({
       data: {
         address: self.address,
@@ -188,7 +203,19 @@ Page({
         files: self.files,
       },
       success: (res) => {
-        console.log(res)
+        that.setData({
+          address: "",
+          wechat: '',
+          num: '',
+          title: '',
+          desc: '',
+          varieties: '',
+          sex: '',
+          age: '',
+          phone: '',
+          files: [],
+        })
+
       }
     })
   },
