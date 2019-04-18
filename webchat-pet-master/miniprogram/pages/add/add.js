@@ -189,6 +189,9 @@ Page({
     //   return 
     // }
 
+    wx.showLoading({
+      title: '提交信息中',
+    })
     db.collection('petList').add({
       data: {
         address: self.address,
@@ -216,14 +219,36 @@ Page({
           files: [],
         })
 
+        wx.hideLoading()
+      },
+      fail: (err) => {
+        wx.hideLoading()
       }
     })
+  },
+
+  // 检查是否有登陆
+  checkLogin() {
+    let openid = wx.getStorageSync('openid')
+    if (!openid) {
+      return 0
+    }
+    return 1
   },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
     
+  },
+
+  onShow: function() {
+    let openid = wx.getStorageSync('openid')
+    if (!openid) {
+      wx.switchTab({
+        url: '/pages/user/user'
+      })
+    }
   }
 
 })

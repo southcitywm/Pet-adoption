@@ -7,7 +7,9 @@ Page({
   data: {
     username: '',
     wechat: '',
-    phone: ''
+    phone: '',
+    profession: '',
+    income: '',
   },
   /*
   },
@@ -43,6 +45,16 @@ Page({
           phone: data
         })
         break;
+      case 'profession':
+        self.setData({
+          profession: data
+        })
+        break;
+      case 'income':
+        self.setData({
+          income: data
+        })
+        break;
     }
   },
 
@@ -65,6 +77,8 @@ Page({
         wechat: self.data.wechat,
         phone: self.data.phone,
         username: self.data.username,
+        profession: self.data.profession,
+        income: self.data.income,
       },
       success: (res) => {
         console.log('res:===', res)
@@ -72,12 +86,16 @@ Page({
           wechat: '',
           username: '',
           phone: '',
+          income: '',
+          profession: ''
         })
         console.log(openid)
         db.collection('user').where({
           _openid: openid
         }).get().then((res) => {
           console.log('==========', res.data[0]._id)
+
+          // 更新 usermsg
           db.collection('user').doc(res.data[0]._id).update({
             data: {
               usermsg: 1

@@ -30,11 +30,15 @@ Page({
     let self = this
     let openid = wx.getStorageSync('openid')
     let a_list = []
+    // 获取用户收养列表
     db.collection('user').where({
       _openid: openid
     }).get().then(res => {
       console.log(res)
       let list = res.data[0].adoption_list
+      let arr_bak = res.data[0].adoption_list
+      let doc_id = res.data[0]._id
+      
       // res.data 是一个包含集合中有权限访问的所有记录的数据，不超过 20 条
       for (var i=0; i<list.length; i++) {
         const promise = db.collection('petList').where({
@@ -42,10 +46,27 @@ Page({
         }).get()
         promise.then((res) => {
           console.log('resss: ',res)
-          a_list.push(res.data[0])
-          self.setData({
-            pet_list: a_list
-          })
+          console.log(res.data.length)
+          if (res.data.length == 0) {
+            // 找到需要删除的下标
+            let index = arr_bak.indexOf(list[i]);
+            // 更新adoption_list
+            db.collection('user').doc(doc_id).update({
+              data: {
+                // 表示指示数据库将字段自增 10
+                adoption_list: arr_bak.splice(index, 1)
+              },
+              success(res) {
+                console.log(res.data)
+              }
+            })
+            
+          } else {
+            a_list.push(res.data[0])
+            self.setData({
+              pet_list: a_list
+            })
+          }
         })
       }
     })

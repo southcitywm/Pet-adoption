@@ -25,7 +25,7 @@ Page({
 
     db.collection('petList').doc(id).get().then(res => {
       // res.data 包含该记录的数据
-      console.log(res.data)
+      // console.log(res.data)
       self.setData({
         data: res.data,
       })
@@ -35,7 +35,7 @@ Page({
   // 预览图片
   previewImage: function (e) {
     let self = this
-    console.log(self.data)
+    // console.log(self.data)
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: self.data.data.files // 需要预览的图片http链接列表
@@ -72,6 +72,9 @@ Page({
         console.log('添加成功')
       })
 
+      // 给发布领养信息人发送请求收养信息
+      self.sendMsg()
+
     })
     
 
@@ -79,6 +82,57 @@ Page({
       title: '已发送收养请求',
       icon: 'none',
       duration: 1500
+    })
+  },
+
+  // 给发布领养信息人发送请求收养信息
+  sendMsg() {
+    let self = this
+    // 发布人openid
+    let push_openid = ''
+    // 用户openid
+    let user_openid = wx.getStorageSync("openid")
+    // 当前用户填写的信息
+    let user_data = {}
+
+
+    // 获取发布人openid
+    db.collection('petList').where({
+      _id: self.data.doc_id
+    }).get().then((res) => {
+      // console.log(res.data[0])
+      // 赋值openid
+      push_openid = res.data[0]._openid
+
+      db.collection('userinfo').where({
+        _openid: user_openid
+      }).get().then((res) => {
+        // console.log('push_id: ', push_openid)
+        // console.log('userinfo: ', res)
+
+        let obj = res.data[0]
+        delete obj._openid
+        delete obj._id
+
+        // 发送消息
+        db.collection('msg').add({
+          data: {
+            ...obj,
+            title: self.data.data.title,
+            msg_openid: push_openid,
+          },
+          success: (res) => {
+            console.log('发送消息成功!')
+          },
+          fail: (err) => {
+            console.log(err)
+          }
+        })
+
+      })
+
+
+
     })
   },
 

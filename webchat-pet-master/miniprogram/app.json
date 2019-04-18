@@ -2,6 +2,7 @@
   "pages": [
     
     "pages/index/index",
+    "pages/msg/index",
     "pages/push/index",
     "pages/userinfo/index",
     "pages/petdetail/index",

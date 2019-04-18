@@ -15,7 +15,7 @@
 </van-cell-group>
 
 <van-cell-group>
-    <van-cell title="我的消息" value="" is-link url="" />
+    <van-cell title="我的消息" value="" is-link url="../msg/index" />
   </van-cell-group>
   
 <van-cell-group>
