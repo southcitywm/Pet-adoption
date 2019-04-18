@@ -15,15 +15,15 @@
 </van-cell-group>
 
 <van-cell-group>
-    <van-cell title="我的消息" value="" is-link url="../msg/index" />
+    <van-cell title="我的消息" value="" is-link data-type="msg" bindtap="clickItem"/>
   </van-cell-group>
   
 <van-cell-group>
-  <van-cell title="我的发布" value="" is-link url="../push/index?type=push" />
+  <van-cell title="我的发布" value="" is-link data-type="push" bindtap="clickItem"/>
 </van-cell-group>
 
 <van-cell-group>
-  <van-cell title="我的收养" value="" is-link url="../push/index?type=adoption" />
+  <van-cell title="我的收养" value="" is-link data-type="adoption" bindtap="clickItem"/>
 </van-cell-group>
 
 <van-cell-group>
@@ -31,5 +31,5 @@
 </van-cell-group>
 
 <van-cell-group>
-  <van-cell title="意见反馈" value="" is-link url="../feedback/feedback" />
+  <van-cell title="意见反馈" value="" is-link data-type="feedback" bindtap="clickItem"/>
 </van-cell-group>

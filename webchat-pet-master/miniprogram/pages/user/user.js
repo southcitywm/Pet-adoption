@@ -12,6 +12,44 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
       },
+
+  // 分别进入不同的页面
+  clickItem(e) {
+    let type = e.target.dataset.type
+    let page_url = ''
+    let openid = wx.getStorageSync('openid')
+
+    // 检查用户是否登陆
+    if (!openid) {
+      wx.showToast({
+        title: '请先登陆',
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+
+    switch (type) {
+      case 'msg':
+        page_url = '/pages/msg/index'
+        break
+      case 'push':
+        page_url = '/pages/push/index?type=push'
+        break
+      case 'adoption':
+        page_url = '/pages/push/index?type=adoption'
+        break
+      case 'feedback':
+        page_url = '/pages/feedback/feedback'
+        break
+    }
+    console.log(1111111)
+
+    wx.navigateTo({
+      url: page_url,
+    })
+
+  },
       onLoad() {
         if (app.globalData.userInfo) {
           this.setData({
