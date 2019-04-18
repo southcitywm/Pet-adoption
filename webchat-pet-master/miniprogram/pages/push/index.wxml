@@ -1,0 +1,10 @@
+<view wx:for="{{pet_list}}" wx:key="item.index" class="item">
+  <view class="img">
+    <image src="{{item.files[0]}}"></image>
+  </view>
+
+  <view class="content">
+    <view class="title">{{item.title}}</view>
+    <view class="desc">{{item.desc}}</view>
+  </view>
+</view>

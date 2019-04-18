@@ -2,6 +2,8 @@
   "pages": [
     
     "pages/index/index",
+    "pages/push/index",
+    "pages/userinfo/index",
     "pages/petdetail/index",
     "pages/add/add",
     "pages/user/user"

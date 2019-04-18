@@ -72,4 +72,4 @@
             </view>
         </view>
     </view>
-<button class="weui-btn cover-btn" type="primary">收养</button>
+<button class="weui-btn cover-btn" bindtap='adoption' type="primary">收养</button>

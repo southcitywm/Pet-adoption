@@ -1,0 +1,20 @@
+<view class="weui-cells weui-cells_after-title">
+
+  <view class="group title">
+    <view class="left">姓名</view>
+    <input class="right" placeholder="请输入姓名" data-type="username" bindinput='msgInput' value="{{username}}"/>
+  </view>
+
+  <view class="group title">
+    <view class="left">微信</view>
+    <input class="right" placeholder="请输入微信" data-type="wechat" bindinput='msgInput' value="{{wechat}}"/>
+  </view>
+
+  <view class="group title">
+    <view class="left">电话号码</view>
+    <input class="right" placeholder="请输入电话号码" data-type="phone" bindinput='msgInput' value="{{phone}}"/>
+  </view>
+  
+</view>
+
+<button class="weui-btn cover-btn" bindtap='submitMsg' type="primary">提交</button>

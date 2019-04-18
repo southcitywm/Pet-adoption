@@ -1,11 +1,11 @@
 <!--index.wxml-->
-<van-card wx:for="{{pet_list}}" num="1" desc="{{item.desc}}" title="{{item.title}}" thumb="" wx:key="{{item.index}}">
+<van-card wx:for="{{pet_list}}" num="1" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.files[0]}}" wx:key="{{item.index}}">
   <view slot="footer">
     <van-row gutter="20">
       <van-col span="19">
         <van-button plain type="primary" size="small" data-id="{{item._id}}" bindtap="petDetail">查看详情</van-button>
       </van-col>
-      <van-button plain type="danger" size="small">收养</van-button>
+      <!-- <van-button plain type="danger" size="small">收养</van-button> -->
     </van-row>
   </view>
 </van-card>

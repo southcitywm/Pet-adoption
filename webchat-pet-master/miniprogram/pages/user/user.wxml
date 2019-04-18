@@ -20,7 +20,7 @@
   title="我的发布"
   value=""
   is-link
-  url="../index"
+  url="../push/index?type=push"
 />
   </van-cell-group>
   <van-cell-group>
@@ -28,7 +28,7 @@
   title="我的收养"
   value=""
   is-link
-  url="../index"
+  url="../push/index?type=adoption"
 />
 </van-cell-group>
   <van-cell-group>
