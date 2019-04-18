@@ -12,7 +12,7 @@
 		"uglifyFileName": true
 	},
 	"appid": "wxba06202672f07bff",
-	"projectname": "%E5%AE%A0%E7%89%A9%E9%A2%86%E5%85%BB%E5%B9%B3%E5%8F%B0%E6%B5%8B%E8%AF%954.18",
+	"projectname": "%E5%AE%A0%E7%89%A9%E9%A2%86%E5%85%BB%E5%B9%B3%E5%8F%B0%E6%B5%8B%E8%AF%95",
 	"libVersion": "2.6.2",
 	"condition": {
 		"search": {
@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -43,6 +43,13 @@
 					"id": -1,
 					"name": "详情",
 					"pathName": "pages/petdetail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "领养人信息",
+					"pathName": "pages/userinfo/index",
 					"scene": null
 				}
 			]

@@ -15,6 +15,16 @@
     <input class="right" placeholder="请输入电话号码" data-type="phone" bindinput='msgInput' value="{{phone}}"/>
   </view>
   
+   <view class="group title">
+    <view class="left">职业</view>
+    <input class="right" placeholder="请输入您的职业" data-type="profession" bindinput='msgInput' value="{{profession}}"/>
+  </view>
+
+  <view class="group title">
+    <view class="left">收入</view>
+    <input class="right" placeholder="请输入月收入" data-type="income" bindinput='msgInput' value="{{income}}"/>
+  </view>
+
 </view>
 
 <button class="weui-btn cover-btn" bindtap='submitMsg' type="primary">提交</button>
