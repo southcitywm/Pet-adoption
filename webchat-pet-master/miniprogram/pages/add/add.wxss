@@ -84,3 +84,6 @@ image.mapIco{
 .duixiang input{
   padding-left: 20rpx
 }
+.info {
+
+}

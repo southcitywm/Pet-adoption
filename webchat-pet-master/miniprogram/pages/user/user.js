@@ -42,6 +42,9 @@ Page({
       case 'feedback':
         page_url = '/pages/feedback/feedback'
         break
+      case 'lovetest':
+        page_url = '/pages/lovetest/index'
+        break
     }
     console.log(1111111)
 

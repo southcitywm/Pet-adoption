@@ -7,7 +7,8 @@
 <view class='getGps'>
   <label class='title'>我的地址</label>
   <image src="../../image/map.png" class="mapIco" mode="widthFix"></image>
-  <input class='info' bindtap="handleAddressClick" placeholder='点击选择，要勾选哎！' value="{{address}}"/>
+  <view class="info" bindtap="handleAddressClick">{{address.length > 0 ? address : '点击选择，要勾选哎！'}}</view>
+  <button wx:if="{{location_bool}}" open-type="openSetting" bindopensetting="openSettings">请先允许定位权限</button>
 </view>
 
 <view class="group title">

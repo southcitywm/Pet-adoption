@@ -15,12 +15,20 @@ Page({
     age:'',
     phone: '',
     files: [],
+    location_bool: false,
   },
    handleAddressClick() {
+    let self = this
     wx.chooseLocation({
-      success: this.handleChooseLocationSucc.bind(this)
+      success: this.handleChooseLocationSucc.bind(this),
+      fail: (err) => {
+        self.setData({
+          location_bool: true
+        })
+      }
     })
   },
+
   handleChooseLocationSucc(res) {
     this.setData({
       address: res.address

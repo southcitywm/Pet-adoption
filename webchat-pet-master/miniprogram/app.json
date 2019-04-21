@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/msg/index",
     "pages/push/index",
@@ -8,9 +7,14 @@
     "pages/petdetail/index",
     "pages/add/add",
     "pages/user/user",
-    "pages/feedback/feedback"
-    
+    "pages/feedback/feedback",
+    "pages/lovetest/index"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",

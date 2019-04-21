@@ -27,7 +27,7 @@
 </van-cell-group>
 
 <van-cell-group>
-  <van-cell title="评测信息" value="" is-link url="../index" />
+  <van-cell title="评测信息" value="" is-link data-type="lovetest" bindtap="clickItem" />
 </van-cell-group>
 
 <van-cell-group>
