@@ -1,1 +1,4 @@
 /* miniprogram/pages/lovetest/index.wxss */
+.item {
+  margin-bottom: 0px;
+}

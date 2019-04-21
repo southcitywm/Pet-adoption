@@ -10,9 +10,15 @@ Page({
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
+        score: 0,
       },
-
+      
+      onShow() {
+        let score = wx.getStorageSync('score')
+        this.setData({
+          score: score
+        })
+      },
   // 分别进入不同的页面
   clickItem(e) {
     let type = e.target.dataset.type
@@ -129,6 +135,12 @@ Page({
                 key: 'usermsg',
                 data: result.data[0].usermsg,
               })
+
+              // 设置openid
+              wx.setStorage({
+                key: 'score',
+                data: result.data[0].score,
+              })
             }
           })
           return
@@ -151,9 +163,17 @@ Page({
             ...user,
             // 用户信息
             usermsg: 0,
-            adoption_list: []
+            adoption_list: [],
+            score: 0
           }
         })
+
+        // 设置openid
+        wx.setStorage({
+          key: 'score',
+          data: 0,
+        })
+
         app.globalData.nickName = user.nickName
         app.globalData.id = result._id
         
