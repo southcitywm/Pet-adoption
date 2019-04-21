@@ -109,9 +109,10 @@ Page({
   onLoad: function (options) {
     let self = this
     let score = wx.getStorageSync('score')
+    let randomIndex = Math.floor(Math.random() * 3)
 
     self.setData({
-      radioItems: Math.floor(Math.random() * 3),
+      radioItems: arrData[randomIndex],
       score: score,
     })
   },
