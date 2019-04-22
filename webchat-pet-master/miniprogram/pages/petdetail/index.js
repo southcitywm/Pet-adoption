@@ -56,24 +56,6 @@ Page({
   adoption() {
     let self = this
     let openid = wx.getStorageSync('openid')
-    let usermsg = wx.getStorageSync('usermsg')
-    let url = null
-
-    // 检查登陆
-    let loginBool = self.checkLogin()
-    if (!loginBool) {
-      wx.switchTab({
-        url: '/pages/user/user'
-      })
-      return
-    }
-
-    // 检查是否填写信息
-    if (!usermsg) {
-      url = '/pages/userinfo/index'
-      return
-    }
-
 
     // 检查爱心值
     let score_bool = self.checkScore()
