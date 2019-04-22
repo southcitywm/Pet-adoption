@@ -56,7 +56,6 @@ Page({
   adoption() {
     let self = this
     let openid = wx.getStorageSync('openid')
-<<<<<<< HEAD
     let usermsg = wx.getStorageSync('usermsg')
     let url = null
 
@@ -74,8 +73,7 @@ Page({
       url = '/pages/userinfo/index'
       return
     }
-=======
->>>>>>> daa8f25045bab7681cc9fa7aca57c0d861b7df95
+
 
     // 检查爱心值
     let score_bool = self.checkScore()
