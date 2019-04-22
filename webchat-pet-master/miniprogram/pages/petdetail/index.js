@@ -66,6 +66,7 @@ Page({
     let self = this
     let openid = wx.getStorageSync('openid')
     let usermsg = wx.getStorageSync('usermsg')
+    let url = null
 
     // 检查登陆
     let loginBool = self.checkLogin()
