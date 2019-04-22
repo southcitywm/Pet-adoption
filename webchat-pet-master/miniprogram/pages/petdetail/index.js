@@ -42,15 +42,6 @@ Page({
     })
   },
 
-  // 检查是否有登陆
-  checkLogin() {
-    let openid = wx.getStorageSync('openid')
-    if (!openid) {
-      return 0
-    }
-    return 1
-  },
-
   // 检查爱心值是否过60分
   checkScore() {
     let score = wx.getStorageSync('score')
@@ -65,6 +56,7 @@ Page({
   adoption() {
     let self = this
     let openid = wx.getStorageSync('openid')
+<<<<<<< HEAD
     let usermsg = wx.getStorageSync('usermsg')
     let url = null
 
@@ -82,6 +74,8 @@ Page({
       url = '/pages/userinfo/index'
       return
     }
+=======
+>>>>>>> daa8f25045bab7681cc9fa7aca57c0d861b7df95
 
     // 检查爱心值
     let score_bool = self.checkScore()

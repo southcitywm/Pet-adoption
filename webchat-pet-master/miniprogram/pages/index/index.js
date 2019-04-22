@@ -35,11 +35,38 @@ Page({
     })
   },
 
+  // 检查是否有登陆
+  checkLogin() {
+    let openid = wx.getStorageSync('openid')
+    if (!openid) {
+      return 0
+    }
+    return 1
+  },
+
   // 进入宠物详情页
   petDetail(e) {
     let self = this
     let id = e.target.dataset.id
+    let usermsg = wx.getStorageSync('usermsg')
     let url = '/pages/petdetail/index?id=' + id
+
+    // 检查登陆
+    let loginBool = self.checkLogin()
+    if (!loginBool) {
+      wx.switchTab({
+        url: '/pages/user/user'
+      })
+      return
+    }
+
+    // 检查是否填写信息
+    if (!usermsg) {
+      wx.navigateTo({
+        url: '/pages/userinfo/index'
+      })
+      return
+    }
 
     wx.navigateTo({
       url,
