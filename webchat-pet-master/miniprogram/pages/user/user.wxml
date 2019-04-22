@@ -8,10 +8,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <van-rate value="{{ value }}" icon="like" void-icon="like-o" color="#f13c3c" bind:change="onChange" />
+  <van-rate value="{{ score/20 }}" icon="like" void-icon="like-o" color="#f13c3c" bind:change="onChange" />
 </view>
 <van-cell-group>
-  <van-cell title="我的爱心值" value="79" />
+  <van-cell title="我的爱心值" value="{{score}}" />
 </van-cell-group>
 
 <van-cell-group>
