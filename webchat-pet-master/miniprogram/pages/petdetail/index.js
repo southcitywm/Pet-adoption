@@ -42,11 +42,10 @@ Page({
     })
   },
 
-  // 检查爱心值是否过60分
-  checkScore() {
-    let score = wx.getStorageSync('score')
-    console.log('score: ', score)
-    if (score < 60) {
+  // 检查是否有登陆
+  checkLogin() {
+    let openid = wx.getStorageSync('openid')
+    if (!openid) {
       return 0
     }
     return 1
@@ -57,12 +56,11 @@ Page({
     let self = this
     let openid = wx.getStorageSync('openid')
 
-    // 检查爱心值
-    let score_bool = self.checkScore()
-    console.log('score_bool: ', score_bool)
-    if (!score_bool) {
-      wx.navigateTo({
-        url: '/pages/lovetest/index',
+    // 检查登陆
+    let loginBool = self.checkLogin()
+    if (!loginBool) {
+      wx.switchTab({
+        url: '/pages/user/user'
       })
       return
     }
@@ -129,7 +127,9 @@ Page({
       }).get().then((res) => {
         // console.log('push_id: ', push_openid)
         // console.log('userinfo: ', res)
-
+        console.log(res)
+        console.log(res.data[0])
+        if(!res.data.length) return console.log('已经添加过')
         let obj = res.data[0]
         delete obj._openid
         delete obj._id
