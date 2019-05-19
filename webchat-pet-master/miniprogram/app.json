@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/lovetest/index",
     "pages/msg/index",
@@ -10,7 +9,6 @@
     "pages/add/add",
     "pages/user/user",
     "pages/feedback/feedback"
-    
   ],
   "permission": {
     "scope.userLocation": {
@@ -49,5 +47,6 @@
         "text": "个人"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
