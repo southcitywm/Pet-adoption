@@ -1,8 +1,8 @@
 Page({
 
   data: {
-   // loadingHide: true,
-   // loadingText: "加载中"
+   loadingHide: true,
+   loadingText: "加载中"
   },
   callmeTap: function () {
     wx.makePhoneCall({

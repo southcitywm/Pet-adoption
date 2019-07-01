@@ -111,7 +111,7 @@ Page({
     })
   },
 
-  // 上传图片
+
   uploadImg(filePath) {
     const self = this
     const cloudPath = 'perlist/' + new Date().getTime() + filePath.match(/\.[^.]+?$/)[0]
@@ -141,7 +141,6 @@ Page({
       }
     })
   },
-
   // 预览图片
   previewImage: function (e) {
     wx.previewImage({
